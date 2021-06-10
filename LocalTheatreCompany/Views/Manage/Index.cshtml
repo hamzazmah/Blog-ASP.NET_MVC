@@ -1,0 +1,46 @@
+﻿@model LocalTheatreCompany.Models.ViewModels.IndexViewModel
+@{
+    ViewData["Image"] = "/img/manage.jpg";
+    ViewData["Heading"] = "Manage your Account";
+}
+
+
+
+<div class="container">
+    <dl class="dl-horizontal">
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        @if (Request.IsAuthenticated)
+        {
+            if (User.IsInRole("Customer"))
+            {
+                <h2>Edit Personal Details</h2>
+                @Html.ActionLink("Edit Details", "EditCustomer", "Customer", new { id = ViewBag.UserID }, new { @class = "btn btn-success" })
+                <hr />
+            }
+        }
+        <h2>Password:</h2>
+        <dd>
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword", null, new { @class = "btn btn-success" })
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+        </dd>
+        <hr />
+        <h2>External Logins:</h2>
+        <dd>
+            @Model.Logins.Count |
+            @Html.ActionLink("Manage", "ManageLogins", null, new { @class = "btn-sm btn-success" })
+        </dd>
+        <hr />
+        <h2>Two-Factor Authentication:</h2>
+        <dd>
+            <p>
+                There are no two-factor authentication providers configured.
+            </p>
+        </dd>
+    </dl>
+</div>

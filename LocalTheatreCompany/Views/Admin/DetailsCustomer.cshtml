@@ -1,0 +1,105 @@
+﻿@model LocalTheatreCompany.Models.Customer
+
+@{
+    ViewData["Image"] = "/img/admin.jpg";
+    ViewData["Heading"] = "Details for " + Model.Firstname;
+}
+
+<div class="container justify-content-center">
+    <dl class="dl-horizontal text-center">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentRole)
+        </dd>
+
+        <dt>
+            Is the Customer Suspended?
+        </dt>
+
+        <dd>
+            @if (Model.IsSuspended == true)
+            {
+                <p>@Model.Firstname is Suspended. @Model.Firstname is not Allowed to Add Comments!</p>
+            }
+            else
+            {
+                <p>@Model.Firstname is Not Suspended. @Model.Firstname is Allowed to Add Comments!</p>
+            }
+        </dd>
+
+    </dl>
+    <hr />
+    <p>
+        <h3 class="text-center">
+            @Html.ActionLink("Edit", "EditCustomer", new { id = Model.Id }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+        </h3>
+    </p>
+</div>

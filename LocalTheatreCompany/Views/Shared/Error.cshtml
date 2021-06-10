@@ -1,0 +1,30 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewData["Image"] = "/img/notfound.jpg";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1 class="text-center">
+                    Oops!
+                </h1>
+                <h2 class="text-center">
+                    404 Not Found
+                </h2>
+                <br />
+                <div class="error-details text-center">
+                    <h4 class="text-muted">Sorry, an error has occured, Requested page not found!</h4>
+                    <h4 class="text-muted">Try Loging In or Refresh the Page.</h4>
+                </div>
+                <br />
+                <div class="error-actions">
+                    <h3 class="text-center">@Html.ActionLink("Take Me Home", "Index", "Home", null,  new { @class = "btn btn-primary" })</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

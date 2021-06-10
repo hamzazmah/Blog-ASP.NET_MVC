@@ -1,0 +1,55 @@
+﻿@model IEnumerable<LocalTheatreCompany.Models.Post>
+@using LocalTheatreCompany.Models
+
+@* Image and Heading to be Used in the Layout  *@
+@{
+    ViewData["Image"] = "/img/home.jpg";
+    ViewData["Img"] = "/img/ltc.jpg";
+}
+
+@*Main Content*@
+<div class="container">
+    @* Display all the Categories which when Clicked take to the Posts page with all the Posts for this Category *@
+    <h1 class="text-lg-center">Categories</h1>
+    <hr />
+    <div class="list-group list-group-horizontal-md justify-content-center">
+        <a href="@Url.Action("Index", "Post")" class="btn btn-outline-success list-group-item list-group-item-dark">All Post's</a>
+        @foreach (var item in ViewBag.Categories)
+        {
+            <a href="@Url.Action("Posts", "Post", new { id=item.CategoryID})" class="btn btn-outline-success list-group-item list-group-item-dark">@item.Name</a>
+        }
+    </div>
+</div>
+
+<br />
+<br />
+
+@* 3 Recent Posts *@
+<div class="container">
+    <h1 class="text-lg-center">Recent Post's</h1>
+    <hr />
+    <div class="row mb-3">
+        @foreach (var item in Model)
+        {
+            <!-- Post preview-->
+            
+            <div class="post-preview col-lg-4 col-sm-6 portfolio-item">
+                <a href="@Url.Action("DetailPost", "Post", new { id = item.PostID})">
+                    <h3 class="post-title">@item.Title</h3>
+                    <h4 class="post-subtitle">@item.Description.Substring(0, 100) . . . </h4>
+                </a>
+                <p class="">
+                    Posted by
+                    <a href="#!">
+                        @item.Staff.Firstname
+                    </a>
+                    <br />
+                    on @item.DatePosted
+                    <br />
+                </p>
+                <mark>@item.Category.Name</mark>
+            </div>
+        }
+
+    </div>
+</div>

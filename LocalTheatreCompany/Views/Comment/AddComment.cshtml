@@ -1,0 +1,36 @@
+﻿@model LocalTheatreCompany.Models.Comment
+
+@{
+    ViewData["Image"] = "/img/add.jpg";
+    ViewData["Heading"] = "Add a New Comment to Engage in the Conversation.";
+}
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <h3>@Html.LabelFor(model => model.CommentDescription, htmlAttributes: new { @class = "control-label col-md-8" })</h3>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CommentDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CommentDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default btn-success" />
+                    |  @Html.ActionLink("Back to Post", "DetailPost", "Post", new { id = ViewBag.PostID }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

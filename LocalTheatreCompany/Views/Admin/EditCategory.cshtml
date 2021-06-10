@@ -1,0 +1,35 @@
+﻿@model LocalTheatreCompany.Models.Category
+
+@{
+    ViewData["Image"] = "/img/admin.jpg";
+    ViewData["Heading"] = "Edit Category";
+}
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.CategoryID)
+
+            <div class="form-group">
+                <h3>@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-6" })</h3>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                    @Html.ActionLink("Back to List", "ViewAllCategories", null, new { @class = "btn btn-primary"})
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

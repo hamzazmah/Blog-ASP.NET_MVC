@@ -1,0 +1,38 @@
+﻿@model IEnumerable<LocalTheatreCompany.Models.Category>
+
+@{
+    ViewData["Image"] = "/img/admin.jpg";
+    ViewData["Heading"] = "List of all the Categories";
+}
+
+<h1 class="text-center">
+    @Html.ActionLink("Create New Category", "CreateCategory", null, new { @class = "btn btn-primary" })
+</h1>
+<br />
+<div class="container text-center">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Controls
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditCategory", new { id = item.CategoryID }, new { @class = "btn-sm btn-success" }) |
+                    @Html.ActionLink("Delete", "DeleteCategory", new { id = item.CategoryID }, new { @class = "btn-sm btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

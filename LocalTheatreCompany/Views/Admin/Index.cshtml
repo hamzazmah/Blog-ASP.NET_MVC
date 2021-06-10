@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Image"] = "/img/admin.jpg";
+    ViewData["Heading"] = "Admin Control's";
+}
+
+<div class="container">
+    <div class="list-group list-group justify-content-center">
+        <a href="@Url.Action("Users", "Admin")" class="btn btn-outline-success list-group-item list-group-item-dark">User's</a>
+        <a href="@Url.Action("Index", "Staff")" class="btn btn-outline-success list-group-item list-group-item-dark">Post's</a>
+        <a href="@Url.Action("UserComments", "Admin")" class="btn btn-outline-success list-group-item list-group-item-dark">Comment's</a>
+        <a href="@Url.Action("ViewAllCategories", "Admin")" class="btn btn-outline-success list-group-item list-group-item-dark">Categories</a>
+    </div>
+</div>
+

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<LocalTheatreCompany.Models.User>
+@using LocalTheatreCompany.Models;
+
+@{
+    ViewData["Image"] = "/img/admin.jpg";
+    ViewData["Heading"] = "List of all the User's";
+}
+
+<h1 class="text-center">
+    @Html.ActionLink("Create New Staff Member", "CreateStaff", null, new { @class = "btn btn-primary" })
+</h1>
+<br />
+
+<div class="container">
+
+    <table class="table-hover table-responsive-lg table-bordered table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th class="">
+                Controls
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit" + (item is Staff ? " Staff" : " Customer"), "Edit" + (item is Staff ? "Staff" : "Customer"), new { id = item.Id }, new { @class = "btn-sm btn-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn-sm btn-success" })
+                    <!-- If the User is Staff with Staff Role show a Button to allow admin to Promote this User -->
+                    @if (item is Staff && item.CurrentRole != "Admin")
+                    {
+                        @Html.ActionLink("Promote", "EditStaff", new { id = item.Id }, new { @class = "btn-sm btn-success" })
+                    }
+                    <!-- If the User is Customer -->
+                    @if (item is Customer)
+                    {
+                        foreach (var cust in ViewBag.Customers)
+                        {
+                            if (cust.Id == item.Id)
+                            {
+                                <!-- If Custoemr is Suspended show a Button to UnSuspend the Customer-->
+                                if (cust.IsSuspended == true)
+                                {
+                                    @Html.ActionLink("Un-Suspend", "EditCustomer", new { id = item.Id }, new { @class = "btn-sm btn-success" })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Suspend", "EditCustomer", new { id = item.Id }, new { @class = "btn-sm btn-danger" })
+                                }
+                            }
+                        }
+                    }
+                    @Html.ActionLink("Delete", "DeleteUser", new { id = item.Id }, new { @class = "btn-sm btn-danger" })
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+

@@ -1,0 +1,78 @@
+﻿@model LocalTheatreCompany.Models.Post
+@using LocalTheatreCompany.Models
+
+@{
+    ViewData["Image"] = Model.ImageUrl;
+    ViewData["Heading"] = Model.Title;
+}
+
+<!-- Post Content-->
+<div class="container">
+    <h6 class="text-muted text-center">
+        Posted by @Model.Staff.UserName
+        <br />
+        on @Model.DatePosted
+    </h6>
+    <hr />
+    <br />
+    <p>@Model.Description</p>
+    <br />
+    <hr />
+    <h3 class="text-center">Comments Section</h3>
+    <hr />
+    @if (Model.Comments.Count < 1)
+    {
+        <h4 class="text-muted text-center">Nothing to See Here!</h4>
+    }
+    else
+    {
+        foreach (var item in Model.Comments)
+        {
+            if (item.IsAccepted == true || ViewBag.UserID == item.UserID)
+            {
+                <h3 class="post-title">@item.CommentDescription</h3>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">
+                        @foreach (var user in ViewBag.Users)
+                        {
+                            if (item.UserID == user.UserID)
+                            {
+                                @user.Username
+                            }
+                        }
+                    </a>
+                    on @item.DatePosted
+                </p>
+                if (ViewBag.UserID == item.UserID)
+                {
+                    <p>
+                        @Html.ActionLink("Edit Comment", "EditComment", "Comment", new { CommentID = item.CommentID, PostID = item.PostID, UserID = item.UserID }, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("Delete Comment", "DeleteComment", "Comment", new { CommentID = item.CommentID, PostID = item.PostID }, new { @class = "btn btn-danger" })
+                    </p>
+                }
+            }
+        }
+    }
+    <hr />
+    <div class="justify-content-center">
+        @if (Request.IsAuthenticated)
+        {
+            if (ViewBag.Customer != null && ViewBag.Customer.IsSuspended == true)
+            {
+                <h5 class="text-center text-danger">It Looks like You've been suspended from Commenting!</h5>
+            }
+            else
+            {
+                <p class="text-center">@Html.ActionLink("Add a Comment", "AddComment", "Comment", new { PostID = Model.PostID }, new { @class = "btn btn-success" })</p>
+            }
+        }
+        else
+        {
+            <h4 class="text-center">Want to Leave a Comment?</h4>
+            <p class="text-center">@Html.ActionLink("Log in", "Login", "Account", null, new { @class = "btn-sm btn-success" })</p>
+        }
+    </div>
+    
+</div>
+

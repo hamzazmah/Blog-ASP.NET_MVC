@@ -1,0 +1,52 @@
+﻿@using LocalTheatreCompany.Models.ViewModels
+@model LoginViewModel
+
+@{
+    ViewData["Image"] = "/img/login.jpeg";
+    ViewData["Heading"] = "Please Use your Account Details to Login.";
+}
+
+<div class="container justify-content-center">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <h3>@Html.LabelFor(m => m.Email, new { @class = "col-md-6 control-label" })</h3>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h3>@Html.LabelFor(m => m.Password, new { @class = "col-md-6 control-label" })</h3>
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                         <h5>
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe, new { @class = "col-md-6 control-label" })
+                         </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default btn-success" />
+                        <p>@Html.ActionLink("Register as a new user", "Register", null, new { @class = "btn btn-default btn-success" })</p>
+                        <p>@Html.ActionLink("Forgot your password?", "ForgotPassword", null, new { @class = "btn btn-default btn-success" })</p>
+                    </div>
+                </div>
+            }
+        </section>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

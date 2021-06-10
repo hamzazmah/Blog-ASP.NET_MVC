@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="LocalTheatreCompany.Models.User">
+    <Position X="0.75" Y="0.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAEAACAAAAAAIAAAAwAAAQAAAAAAAAAIAAAAAIAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocalTheatreCompany.Models.Category">
+    <Position X="13" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocalTheatreCompany.Models.Customer">
+    <Position X="0.75" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocalTheatreCompany.Models.Staff">
+    <Position X="3.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Staff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.AspNet.Identity.EntityFramework.IdentityUser">
+    <Position X="6.5" Y="0.5" Width="4.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LocalTheatreCompany.Models.Comment">
+    <Position X="9" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAABAAEAAAAAAAEAAAAAAAggCAAAAAAgAgAAAAAAAAA=</HashCode>
+      <FileName>Models\Comment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocalTheatreCompany.Models.LocalTheatreCompanyDbContext">
+    <Position X="15.75" Y="4" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAEEAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\LocalTheatreCompanyDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocalTheatreCompany.Models.Post">
+    <Position X="8.5" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAACAAAgAEEAAAAAAAggACAAAAAAAAAAAAAAKAA=</HashCode>
+      <FileName>Models\Post.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.AspNet.Identity.EntityFramework.IdentityUser&lt;TKey, TLogin, TRole, TClaim&gt;">
+    <Position X="3.5" Y="2.25" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

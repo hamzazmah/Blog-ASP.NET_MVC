@@ -1,0 +1,25 @@
+﻿@model LocalTheatreCompany.Models.Comment
+
+@{
+    ViewData["Image"] = "/img/delete.jpg";
+    ViewData["Heading"] = "Are you sure you would like to Delete this Comment?";
+}
+
+<div class="container text-center">
+    <h2>Comment</h2>
+    <br />
+        <h5 class="text-muted">
+            @Html.DisplayFor(model => model.CommentDescription)
+        </h5>
+        <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default btn-danger" /> |
+            @Html.ActionLink("Back to Post", "DetailPost", "Post", new { id = ViewBag.PostID }, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>
